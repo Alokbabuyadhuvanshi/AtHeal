@@ -8,7 +8,7 @@ from .forms import PatientUpdateForm, PasswordUpdateForm
 def Update_patient_info(request):
     patient = request.user.patient
     if request.method == 'POST':
-        form = PatientUpdateForm(request.POST, instance=patient)
+        form = PatientUpdateForm(request.POST, request.FILES, instance=patient)
         if form.is_valid():
             form.save()
             messages.success(request, 'Your information has been updated successfully.')
