@@ -143,5 +143,5 @@ LOGOUT_REDIRECT_URL = 'login'
 SESSION_COOKIE_AGE = 3600  # 1 hour (in seconds)
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True # Clear session on browser close
 
-GEMINI_API_KEY = 'AIzaSyDD9xvxOl-wmURzUA6c82iIi9pVSmqq170'
+GEMINI_API_KEY = 'your gemini api'
 GEMINI_MODEL = 'gemini-2.0-flash-lite'
