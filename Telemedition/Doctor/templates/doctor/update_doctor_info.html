@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{% static 'css/update_doctor_info.css' %}">
+</head>
+<body>
+    {% include "iframe.html" %}
+    {% include "navbar.html" %}
+    
+    <div class="container">
+        {% include "message.html" %}
+        <h1>Profile Information</h1>
+        <div class="current-image-section">
+            {% if form.instance.image %}
+            <img src="{{ form.instance.image.url }}" alt="Current Profile Image" class="current-profile-pic">
+            {% endif %}
+            <p class="image-label">{{ user.get_full_name }}</p>
+        </div>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.image.label_tag }}
+                {{ form.image }}
+            </div>
+            <div class="form-group">
+                {{ form.Specialization.label_tag }}
+                {{ form.Specialization }}
+            </div>
+            <div class="form-group">
+                {{ form.Qualification.label_tag }}
+                {{ form.Qualification }}
+            </div>
+            <div class="form-group">
+                {{ form.Experience.label_tag }}
+                {{ form.Experience }}
+            </div>
+            <div class="form-group">
+                {{ form.Contact.label_tag }}
+                {{ form.Contact }}
+            </div>
+            <div class="form-group">
+                {{ form.Address.label_tag }}
+                {{ form.Address }}
+            </div>
+            <button type="submit" class="btn">Update Information</button>
+        </form>
+        <div class="link-container">
+            <a href="{% url 'home' %}">Back to Home</a> |
+            <a href="{% url 'update_password' %}">Update Password</a>
+        </div>
+    </div>
+</body>
+</html>

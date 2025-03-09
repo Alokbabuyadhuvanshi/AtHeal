@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="{% static 'css/book_appointment.css' %}">
+    <title>Book Appointment</title>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    {% include "iframe.html" %}
+
+    {% block main %}
+    {% if doctor %}
+    <div class="background-overlay">
+        <div class="container">
+            {% include "message.html" %}
+            <h2>Book Appointment with Dr. {{ doctor.user.username }}</h2>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.appointment_date.label_tag }}
+                    {{ form.appointment_date }}
+                    {% if form.appointment_date.errors %}
+                        <div class="error">{{ form.appointment_date.errors }}</div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.notes.label_tag }}
+                    {{ form.notes }}
+                </div>
+                <div class="form-group">
+                    {{ form.file }}
+                </div>
+                <button type="submit" class="btn btn-primary">Book Appointment</button>
+                <a href="{% url 'consult_doctor' %}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+    {% endblock %}
+</body>
+</html>

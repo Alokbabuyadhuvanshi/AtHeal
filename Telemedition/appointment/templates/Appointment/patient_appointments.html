@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments</title>
+    <link rel="stylesheet" href="{% static "css/appointment.css" %}">
+</head>
+<body>
+    {% include "navbar.html" %}
+    {% include "iframe.html" %}
+    <div class="container">
+        {% include "message.html" %}
+        <h2>🗓️ My Appointments</h2>
+        {% if appointments %}
+            <table class="appointments-table">
+                <thead>
+                    <tr>
+                        <th>Doctor</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>File</th>
+                        <th>Video Call</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for appointment in appointments %}
+                        <tr>
+                            <td>{{ appointment.doctor.user.get_full_name }}</td>
+                            <td>{{ appointment.appointment_date }}</td>
+                            <td>{{ appointment.status }}</td>
+                            <td>
+                                {% if appointment.file %}
+                                    <a href="{{ appointment.file.url }}" target="_blank">📄 View File</a>
+                                {% else %}
+                                    No file uploaded
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if appointment.video_call_room %}
+                                    <a href="/appointment/video_call/?roomID={{ appointment.video_call_room }}" class="btn btn-primary">
+                                        Join Call
+                                    </a>
+                                {% else %}
+                                    Appointment
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>You have no appointments yet.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    min-height: 100vh;
+}
+
+
+.container {
+    max-width: 750px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.178);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    margin-top: 80px;
+    transition: 0.5s ease;
+}
+
+.container:hover {
+    box-shadow: 5px 5px 10px black;
+}
+
+
+h2 {
+    color: #d7d7d7;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #150707;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.submit-btn {
+    width: 200px;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
+
+.doctor-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.doctor-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 250px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.doctor-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.doctor-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.doctor-card h4 {
+    font-size: 20px;
+    margin: 10px 0;
+    color: #333;
+}
+
+.doctor-card p {
+    color: #666;
+    margin: 5px 0;
+}
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    min-width: 490px;
+}
+
+label{
+    color: white;
+}
+
+input {
+    width: 50%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 25px 0 0 25px;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    outline: none;
+    transition: box-shadow 0.3s;
+}
+
+input:focus {
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+    border-color: #80bdff;
+}
+
+.submit-btn {
+    padding: 12px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 0 25px 25px 0;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 16px;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
+

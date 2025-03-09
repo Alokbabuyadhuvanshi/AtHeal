@@ -1,0 +1,77 @@
+{% load static %}
+{% block navbar %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<div class="navbar">
+    <div class="logo">Healio</div>
+    <div class="menu-icon" id="menu-icon">&#9776;</div>
+    <div class="nav-overlay" id="nav-overlay"></div>
+    <div class="nav-links" id="nav-links">
+    <div class="close-btn" id="close-btn">&times;</div>
+        <a href="{% url 'home' %}">Home</a>
+        {% if user.is_doctor %}
+        <a href="{% url "doctor_appointments" %}">Appointments</a>
+        {% else %}
+        <a href="{% url 'consult_doctor' %}">Consult Doctors</a>
+        <a href="{% url 'patient_appointments' %}">Appointments</a>
+        {% endif %}
+        <a href="{% url "chat_home" %}">🧠 Medical Assistant</a>
+        <a href="{% url "about" %}">About</a>
+
+        {% if user.is_authenticated %}
+        <div class="dropdown">
+            <div class="dropicon">
+                {% if user.is_doctor and user.doctor.image %}
+                    <img src="{{ user.doctor.image.url }}" alt="Doctor Photo" class="profile-photo">
+                {% elif user.is_patient and user.patient.image %}
+                    <img src="{{ user.patient.image.url }}" alt="Patient Photo" class="profile-photo">
+                {% elif user.is_staff and user.patient.image %}
+                    <img src="{{ user.patient.image.url }}" alt="Patient Photo" class="profile-photo">
+                {% elif user.is_staff and user.doctor.image %}
+                    <img src="{{ user.doctor.image.url }}" alt="Patient Photo" class="profile-photo">
+                {% else %} 
+                    <!-- Default Profile Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                    </svg>
+                {% endif %}
+            </div>
+            <div class="dropdown-content">
+                {% if user.is_doctor %}
+                <a href="{% url "update_doctor_info" %}">Profile</a>
+                {% else %}
+                <a href="{% url "update_patient_info" %}">Profile</a>
+                {% endif %}
+                <a href="{% url "logout" %}">Logout</a>
+            </div>
+        </div>
+        {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var menuIcon = document.getElementById("menu-icon");
+        var navLinks = document.getElementById("nav-links");
+        var closeBtn = document.getElementById("close-btn");
+        var overlay = document.getElementById("nav-overlay");
+        
+        menuIcon.addEventListener("click", function() {
+            navLinks.classList.add("active");
+            overlay.classList.add("active");
+        });
+        
+        closeBtn.addEventListener("click", function() {
+            navLinks.classList.remove("active");
+            overlay.classList.remove("active");
+        });
+        
+        overlay.addEventListener("click", function() {
+            navLinks.classList.remove("active");
+            overlay.classList.remove("active");
+        });
+    });
+</script>
+
+{% endblock %}

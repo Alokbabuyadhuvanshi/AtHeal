@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <title>Healio</title>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    {% include "iframe.html" %}
+    {% block main %}
+    
+    {% endblock main %}
+    
+</body>
+</html>

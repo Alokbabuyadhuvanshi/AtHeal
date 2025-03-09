@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consult Doctor</title>
+    <link rel="stylesheet" href="{% static 'css/consult_doctor.css' %}">
+</head>
+<body>
+    {% include "navbar.html" %}
+    {% include "iframe.html" %}
+    <div class="container" style="z-index: 10;">
+        {% include "message.html" %}
+        <h2>Consult a Doctor</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="submit-btn">Search</button>
+        </form>
+        {% if doctors %}
+        <h3>Available Doctors</h3>
+        <ul class="doctor-list">
+            {% for doctor in doctors %}
+            <li class="doctor-card">
+                <h4>{{ doctor.name.username }}</h4>
+                <img src="{{ doctor.image.url }}" alt="Doctor Image" class="doctor-image">
+                <p>Specialization: {{ doctor.Specialization }}</p>
+                <p>Qualification: {{ doctor.Qualification }}</p>
+                <p>Experience: {{ doctor.Experience }} years</p>
+                <p>Contact: {{ doctor.Contact }}</p>
+                <p>Address: {{ doctor.Address }}</p>
+                <a href="{% url 'book_appointment' doctor.id %}" class="btn btn-primary">
+                    Book Appointment
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% elif doctors is not None %}
+        <p>No doctors available for the entered issue.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

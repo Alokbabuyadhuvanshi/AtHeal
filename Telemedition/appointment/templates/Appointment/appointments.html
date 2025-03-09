@@ -1,0 +1,60 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="{% static 'css/appointment.css' %}">
+    <title>Book Appointment</title>
+</head>
+<body>
+    {% include "navbar.html" %}
+    {% include "iframe.html" %}    
+    <div class="container">
+        {% include "message.html" %}
+        <h2>🗓️ My Appointments</h2>
+        {% if appointments %}
+            <table class="appointments-table">
+                <thead>
+                    <tr>
+                        <th>Patient</th>
+                        <th>Date & Time</th>
+                        <th>Report</th>
+                        <th>Status</th>
+                        <th>Video Call</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for appointment in appointments %}
+                    <tr>
+                            <td>{{ appointment.patient.user.username }}</td>
+                            <td>{{ appointment.appointment_date }}</td>
+                            <td>
+                                {% if appointment.file %}
+                                <a href="{{ appointment.file.url }}" target="_blank">📄 View File</a>
+                                {% else %}
+                                No file uploaded
+                                {% endif %}
+                            </td>
+                            <td>{{ appointment.get_status_display }}</td>
+                            <td>
+                                {% if not appointment.video_call_room %}
+                                    <a href="{% url 'start_video_call' appointment.id %}" class="btn btn-success">Start Call</a>   
+                                {% else %}
+                                    <a href="/appointment/video_call/?roomID={{ appointment.video_call_room }}" class="btn btn-primary">Rejoin</a>           
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{% url 'update_appointment' appointment.id %}" class="btn btn-primary">
+                                    Update
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No appointments found.</p>
+        {% endif %}
+    </div>
+</body>

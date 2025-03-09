@@ -1,0 +1,77 @@
+body {
+    background-color: #2f2fbb00; /* Light background for better readability */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: #ffffff; 
+}
+
+p {
+    color: #000000; 
+}
+
+.about-container {
+    font-size: large;
+    position: relative;
+    margin-top: 55px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 20px;
+    max-width: 800px; /* Limit width for better readability */ 
+    padding: 20px;
+    background: rgba(49, 40, 175, 0.34); /* White background for content */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-container h2 {
+    margin-bottom: 20px;
+}
+
+.about-container h3 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+/* List Styles */
+.about-container ul,
+.about-container ol {
+    margin-left: 20px; /* Indent lists */
+}
+
+/* Footer Styles */
+footer {
+    display: inline-flex;
+    justify-content: space-evenly;
+    background: #f5f8fb; /* Match footer with header */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Stack navigation items on smaller screens */
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0; /* Add spacing between stacked items */
+    }
+
+    .about-container {
+        margin: 20px; /* Reduce margin on smaller screens */
+        padding: 15px; /* Reduce padding on smaller screens */
+    }
+}

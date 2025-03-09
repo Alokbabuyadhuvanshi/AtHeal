@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    max-width: 400px;
+    margin: 60px auto 0 auto;
+    background: rgba(26, 56, 202, 0.18); /* Slightly transparent */
+    padding: 20px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8), 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.5s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.container:hover {
+    box-shadow: 5px 5px 10px black;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #03071f;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 14px;
+}
+
+.form-group input:focus {
+    border-color: #0e0918;
+    outline: none;
+    box-shadow: 0 0 5px rgba(19, 6, 48, 0.5);
+}
+
+.form-check-input {
+    display: inline-flex;
+}
+
+.alert {
+    background: #ffdddd;
+    border-left: 6px solid #f44336;
+    color: #a94442;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    text-align: left;
+}
+.btn-close {
+    background: transparent;
+    border: none;
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+    color: #a94442;
+}
+
+
+.radio-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radio-group label {
+    margin-right: 10px;
+}
+
+.radio-group input {
+    margin-right: 5px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #2182eb;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+    background-color: #024e9f;
+    transform: translateY(-2px);
+}
+
+.register-text {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.register-text a {
+    color: #fcfcfc;
+    text-decoration: none;
+}
+
+.register-text a:hover {
+    text-decoration: underline;
+}
+
+.input-field {
+    animation: slide-in 0.5s ease forwards;
+}
+
+input:focus {
+    transform: scale(1.02);
+    transition: 0.5s ease;
+}

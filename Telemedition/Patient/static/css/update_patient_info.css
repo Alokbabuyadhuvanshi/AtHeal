@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    max-width: 500px;
+    margin: 60px auto;
+    background: rgba(26, 56, 202, 0.18);
+    padding: 30px;
+    position: relative;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.5s ease;
+}
+
+.container:hover {
+    box-shadow: 5px 5px 15px black;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #03071f;
+    font-size: 26px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #0e0918;
+    outline: none;
+    box-shadow: 0 0 5px rgba(19, 6, 48, 0.5);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+.form-group a{
+    color: white;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 10px 0;
+    border: 3px solid #2182eb;
+}
+/* Current Image Section */
+.current-image-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the content horizontally */
+    justify-content: center; /* Centers the content vertically */
+    margin-bottom: 20px;
+}
+
+
+.image-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff9f9;
+    margin-bottom: 10px;
+}
+
+
+.current-profile-pic {
+    width: 120px; /* Adjust size */
+    height: 120px; /* Ensure it's circular */
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #2182eb;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.current-profile-pic:hover {
+    transform: scale(1.05);
+}
+
+
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #2182eb;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+    background-color: #024e9f;
+    transform: translateY(-2px);
+}
+
+.link-container {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.link-container a {
+    color: #fafafa;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.link-container a:hover {
+    text-decoration: underline;
+}

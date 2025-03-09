@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+
+.container {
+    background: rgba(26, 56, 202, 0.18);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8), 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    opacity: 1.05;
+    transition: 0.5s ease;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+
+.container:hover {
+    box-shadow: 5px 5px 10px black;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #03071f;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Input Fields */
+.input-field {
+    width: 100%;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 14px;
+    box-sizing: border-box;
+    animation: slide-in 0.5s ease forwards;
+}
+
+.input-field:focus {
+    border-color: #0e0918;
+    outline: none;
+    box-shadow: 0 0 5px rgba(19, 6, 48, 0.5);
+}
+
+input:focus {
+    transform: scale(1.02);
+    transition: 0.5s;
+}
+
+/* Button */
+.btn {
+    background: #2182eb;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background: #024e9f;
+    transform: translateY(-2px);
+}
+
+.button-group {
+    text-align: center;
+}
+
+/* Alert Messages */
+.alert {
+    background: #ffdddd;
+    border-left: 6px solid #f44336;
+    color: #a94442;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    text-align: left;
+}
+.btn-close {
+    background: transparent;
+    border: none;
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+    color: #a94442;
+}
+.register-text {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.register-text a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.register-text a:hover {
+    text-decoration: underline;
+}

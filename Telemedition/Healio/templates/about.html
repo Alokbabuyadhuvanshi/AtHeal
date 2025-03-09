@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Healio</title>
+    <link rel="stylesheet" href="{% static "css/about.css" %}">
+</head>
+<body>
+    {% include "navbar.html" %}   
+    {% include "iframe.html" %}
+    <section class="about-container">
+        {% include "message.html" %}
+        <h2>About Healio - Your Trusted Telemedicine Companion</h2>
+        <p>Healio is a cutting-edge telemedicine platform designed to provide accessible, reliable, and convenient healthcare solutions. Our mission is to connect patients with medical professionals, offering seamless virtual consultations, AI-powered medical assistance, and essential healthcare services—all from the comfort of your home.</p>
+
+        <h3>Our Mission</h3>
+        <p>At Healio, we believe that healthcare should be accessible to everyone, regardless of location or circumstances. Our goal is to bridge the gap between patients and medical experts, leveraging technology to deliver efficient and high-quality healthcare services.</p>
+
+        <h3>Why Choose Healio?</h3>
+        <ul>
+            <li><strong>Instant AI Medical Assistance</strong> – Get real-time health advice from our AI-powered assistant, helping you understand symptoms and receive general health guidance.</li>
+            <li><strong>Secure & Private Consultations</strong> – Book virtual appointments with certified doctors while ensuring your medical data remains confidential and secure.</li>
+            <li><strong>24/7 Accessibility</strong> – Access healthcare anytime, anywhere, with our user-friendly platform available on multiple devices.</li>
+            <li><strong>Prescription & Follow-ups</strong> – Receive digital prescriptions and schedule follow-up consultations without the need for physical visits.</li>
+            <li><strong>Emergency Guidance</strong> – Our AI assistant helps identify serious symptoms and directs you to the appropriate medical professional or emergency services.</li>
+        </ul>
+
+        <h3>How It Works</h3>
+        <ol>
+            <li><strong>Describe Your Symptoms</strong> – Start by explaining your symptoms or health concerns through our AI chatbot.</li>
+            <li><strong>AI-Driven Insights</strong> – Get general health advice, possible causes, and recommendations based on your input.</li>
+            <li><strong>Connect with a Doctor</strong> – Schedule an online consultation with a licensed medical professional for expert diagnosis and treatment.</li>
+            <li><strong>Receive Your Prescription</strong> – If necessary, your doctor will provide a digital prescription and suggest the next steps for your care.</li>
+        </ol>
+
+        <h3>Our Commitment</h3>
+        <p>We are dedicated to providing the best telehealth experience by continuously improving our platform and ensuring that users receive prompt and professional medical guidance. Our team of healthcare professionals and tech experts work tirelessly to make healthcare more accessible, affordable, and efficient.</p>
+    </section>
+
+    <footer>
+        <div><p>Have questions or need support? Reach out to us:</p></div>
+        <div><p><strong>Email:</strong> example@healio.com</p></div>
+        <div><p><strong>Phone:</strong> +1 (800) 123-4567</p></div>
+        <div><p><strong>Follow Us:</strong> @HealioExample</p></div>
+    </footer>
+</body>
+</html>

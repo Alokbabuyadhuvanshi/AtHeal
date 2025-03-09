@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+</head>
+<body>
+    {% include "iframe.html" %}
+    {% include "navbar.html" %}
+    <div class="container">
+        {% include "message.html" %}
+        <h2>Signup</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+            <div class="form-group">
+                {{ form.first_name.label_tag }}
+                {{ form.first_name }}
+            </div>
+            <div class="form-group">
+                {{ form.last_name.label_tag }}
+                {{ form.last_name }}
+            </div>
+            <div class="form-group">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+            <div class="password-requirements">
+                <ul class="password-requirements-list" style="padding-left: 30px; padding-bottom:10px; font-size: small;">
+                    <li>Your password must contain at least 8 characters.</li>
+                    <li>It should include both uppercase and lowercase letters.</li>
+                </ul>
+            </div>
+            <div class="form-group">
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+            </div>
+            <div class="form-group">
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+            </div>
+            <div class="radio-group">
+                {{ form.is_doctor.label_tag }}
+                {{ form.is_doctor }}
+            </div>
+            <button type="submit" class="btn">Signup</button>
+        </form>
+        <p class="register-text">
+            Already have an account? 
+            <a class="register-link" href="{% url 'login' %}"><span class="register-bold">Login</span></a>
+        </p>
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var closeButtons = document.querySelectorAll('.btn-close');
+        closeButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                this.parentElement.style.display = 'none';
+            });
+        });
+
+        setTimeout(function() {
+            var alerts = document.querySelectorAll('.alert');
+            alerts.forEach(function(alert) {
+                alert.style.display = 'none';
+            });
+        }, 3000);
+    });
+</script>
+</html>

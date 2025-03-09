@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    {% include "iframe.html" %}
+
+    {% include "navbar.html" %}
+    <div class="container">
+        {% include "message.html" %}
+        <h2>Login</h2>
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" class="input-field" name="username" placeholder="🧑Enter Your Username" required>
+            </div>
+            <div class="form-group">
+                <input type="password" class="input-field" name="password" placeholder="🔒Password" required>
+            </div>
+            <div class="button-group">
+                <button type="submit" class="btn">Login</button>
+            </div>
+        </form>
+        <p class="register-text"> Don't have an account? <a class="register-link" href="{% url 'signup' %}"><span class="register-bold">Register</span></a> </p>
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var alerts = document.querySelectorAll('.alert');
+
+        // Auto-dismiss after 3 seconds
+        alerts.forEach(function(alert) {
+            setTimeout(function() {
+                alert.style.opacity = '0'; // Fade out
+                setTimeout(function() {
+                    alert.style.display = 'none'; // Remove from view
+                }, 500); // Wait for fade-out transition
+            }, 3000); // 3 seconds
+        });
+
+        // Manual close button
+        var closeButtons = document.querySelectorAll('.btn-close');
+        closeButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                this.parentElement.style.display = 'none';
+            });
+        });
+    });
+</script>
+</html>

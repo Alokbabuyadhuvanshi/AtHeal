@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Medical Assistant</title>
+    <link rel="stylesheet" href="{% static 'chat.css' %}">
+</head>
+<body>
+    {% include "navbar.html" %}
+    {% include "iframe.html" %}
+
+    {% block content %}
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="icon-wrapper">
+                <img class="bot" src="{% static 'medical_assistant/android.png' %}" alt="AI Assistant" class="icon">
+            </div>
+            <h1>AI Medical Assistant</h1>
+        </div>
+        <div class="chat-box" id="chat-box">
+            {% for message in messages %}
+            <div class="message {% if message.role == 'user' %}user-message{% else %}ai-message{% endif %}">
+                <p>{{ message.content }}</p>
+                <span class="timestamp">{{ message.timestamp|date:"g:i A" }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        <form id="chat-form">
+            {% csrf_token %}
+            <input id="user-input" placeholder="Type your message..." rows="2"></input>
+            <button type="submit" id="send-btn" aria-label="Send message">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="send-icon">
+                    <path d="M2.5 10l15-7v14l-15-7z" />
+                </svg>
+            </button>
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('chat-form');
+            const input = document.getElementById('user-input');
+            const chatBox = document.getElementById('chat-box');
+            function scrollToBottom() {
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+            function addMessage(content, isUser ) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${isUser  ? 'user-message' : 'ai-message'}`;
+                messageDiv.innerHTML = `<p>${content}</p><span class="timestamp">${new Date().toLocaleTimeString()}</span>`;
+                chatBox.appendChild(messageDiv);
+                scrollToBottom();
+            }
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const message = input.value.trim();
+                if (!message) return;
+                addMessage(message, true);
+                input.value = '';
+                try {
+                    const response = await fetch('/medical_assistant/api/message/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                        },
+                        body: JSON.stringify({ message })
+                    });
+                    const data = await response.json();
+                    addMessage(data.ai_response, false);
+                } catch (error) {
+                    console.error('Error:', error);
+                    addMessage('Sorry, an error occurred. Please try again.', false);
+                }
+            });
+            scrollToBottom();
+        });
+    </script>
+    {% endblock %}
+</body>
+</html>

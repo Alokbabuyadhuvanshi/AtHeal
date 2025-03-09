@@ -1,0 +1,107 @@
+<html>
+
+<head>
+    <style>
+        #root {
+            width: 100vw;
+            height: 100vh;
+            }
+            
+        button, a.button-link {
+            background-color: #007bff; /* Blue background for the link */
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none; /* Removing underline from the anchor link */
+            display: inline-block; /* Ensure anchor behaves like a block-level element */
+            transition: background 0.3s ease-in-out;
+            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        button:hover, a.button-link:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        
+        button:active, a.button-link:active {
+            background-color: #003f7f; /* Even darker blue when clicked */
+        }
+            
+    </style>
+</head>
+
+
+<body>
+    <div id="root">
+    </div>
+    <div style="text-align: center; margin-top: -20px;">
+        {% if user.is_doctor %}
+        <button onclick="endCall()">End Call</button>
+        {% else %}
+        <a href="{% url "patient_appointments" %}" class="button-link">Back to Appointments</a>
+        {% endif %}
+    </div>
+</body>
+
+<script>
+function endCall() {
+    const appointmentId = "{{ appointment.id }}"; 
+    window.location.href = `/appointment/end_video_call/${appointmentId}/`;
+}
+</script>
+<script src="https://unpkg.com/@zegocloud/zego-uikit-prebuilt/zego-uikit-prebuilt.js"></script>
+<script>
+window.onload = function () {
+    function getUrlParams(url) {
+        let urlStr = url.split('?')[1];
+        const urlSearchParams = new URLSearchParams(urlStr);
+        const result = Object.fromEntries(urlSearchParams.entries());
+        return result;
+    }
+
+
+        // Generate a Token by calling a method.
+        // @param 1: appID
+        // @param 2: serverSecret
+        // @param 3: Room ID
+        // @param 4: User ID
+        // @param 5: Username
+    const roomID = getUrlParams(window.location.href)['roomID'] || (Math.floor(Math.random() * 10000) + "");
+    const userID = Math.floor(Math.random() * 10000) + "";
+    const userName = "{{ Username }}"
+    const appID = 421835353;
+    const serverSecret = "1e2fef7c22c81e56f1d249b801e22f82";
+    const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, userID, userName);
+
+    
+        const zp = ZegoUIKitPrebuilt.create(kitToken);
+        zp.joinRoom({
+            container: document.querySelector("#root"),
+            sharedLinks: [{
+                name: 'Personal link',
+                url: window.location.protocol + '//' + window.location.host  + window.location.pathname + '?roomID=' + roomID,
+            }],
+            scenario: {
+                mode: ZegoUIKitPrebuilt.VideoConference,
+            },
+                
+            turnOnMicrophoneWhenJoining: false,
+            turnOnCameraWhenJoining: false,
+            showMyCameraToggleButton: true,
+            showMyMicrophoneToggleButton: true,
+            showAudioVideoSettingsButton: true,
+            showScreenSharingButton: true,
+            showTextChat: true,
+            showUserList: true,
+            maxUsers: 2,
+            layout: "Auto",
+            showLayoutButton: false,
+        
+            });
+}
+</script>
+
+</html>

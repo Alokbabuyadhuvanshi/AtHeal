@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>update_appointment</title>
+    <link rel="stylesheet" href="{% static "css/update_appointment.css" %}">
+</head>
+<body>
+    {% include "navbar.html" %}
+    {% include "iframe.html" %}
+    {% block main %}
+    <div class="container">
+        {% include "message.html" %}
+        <h2>Update Appointment</h2>
+        <div class="appointment-details">
+            <p><strong>Patient:</strong> {{ appointment.patient.name.username }}</p>
+            <p><strong>Date:</strong> {{ appointment.appointment_date }}</p>
+            <p><strong>Current Status:</strong> {{ appointment.get_status_display }}</p>
+        </div>
+        
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="status">Update Status:</label>
+                <select name="status" id="status" class="form-control">
+                    <option value="⌛" {% if appointment.status == '⌛' %}selected{% endif %} alt="Pending">⌛</option>
+                    <option value="✔" {% if appointment.status == '✔' %}selected{% endif %} alt="Confirmed">✔</option>
+                    <option value="✖" {% if appointment.status == '✖' %}selected{% endif %} alt="Cancelled">✖</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Status</button>
+            <a href="{% url 'doctor_appointments' %}" class="btn btn-secondary">Back to Appointments</a>
+        </form>
+    </div>
+    {% endblock main %}
+</body>
+</html>

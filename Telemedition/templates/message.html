@@ -1,0 +1,32 @@
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" aria-label="Close">&times;</button>
+        </div>
+    {% endfor %}
+{% endif %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var alerts = document.querySelectorAll('.alert');
+
+        // Auto-dismiss after 3 seconds
+        alerts.forEach(function (alert) {
+            setTimeout(function () {
+                alert.style.opacity = '0'; // Fade out
+                setTimeout(function () {
+                    alert.style.display = 'none'; // Remove from view
+                }, 500); // Wait for fade-out transition
+            }, 3000); // 3 seconds
+        });
+
+        // Manual close button
+        var closeButtons = document.querySelectorAll('.btn-close');
+        closeButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                this.parentElement.style.display = 'none';
+            });
+        });
+    });
+</script>
