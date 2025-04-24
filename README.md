@@ -129,6 +129,3 @@ Feel free to fork the repository and submit pull requests. If you'd like to cont
 ## 📄 License
 ```
 
----
-
-Let me know if you want me to generate sample screenshots or icons for this `README` too!
